@@ -47,6 +47,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
     ];
 
     protected $visible = [
+		'id',
         'name',
         'email',
         'role_id'
@@ -118,6 +119,8 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
 
         $password = $user->password;
 
+		$id = $user->id;
+		
         if (app('hash')->check($userPassword, $password)) {
             return $user;
         }

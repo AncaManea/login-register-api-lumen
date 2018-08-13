@@ -49,5 +49,14 @@ $router->group(['namespace' => API_VERSION, 'prefix' => API_VERSION, 'middleware
             $router->delete('/{id}', ['uses' => 'AdminController@deleteUser']);
         });
     });
+	
+	 $router->group(['prefix' => 'task'], function () use ($router) {
+        $router->post('/add', ['uses' => 'TasksController@add']);
+        $router->get('/getall', ['uses' => 'TasksController@getAll']);
+		$router->get('/delete/{id}', ['uses' => 'TasksController@deleteTask']);
+		$router->post('/edit/{id}', ['uses' => 'TasksController@editTask']);
+		$router->get('/get/{id}', ['uses' => 'TasksController@get']);
+    });
+	
 });
 
